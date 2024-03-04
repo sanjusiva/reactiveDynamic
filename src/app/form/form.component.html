@@ -1,0 +1,23 @@
+<p>form works!</p>
+<div class="card" style="width: 45rem;">
+<form [formGroup]="myForm" (ngSubmit)="send(myForm.value)">
+  <label>Customer Name </label>
+  <br>  
+  <input type="text" formControlName="custName">
+  <br>
+  <label>Shop Name </label>
+  <br>  
+  <input type="text" formControlName="shopName">
+  <br>
+  <br>  
+  <div class='card' style="width: 18rem;" *ngFor="let phone of getPhonesFormControls(); let i = index">
+    <label>Phone {{i}} </label>   <br>
+    <input [formControl]="phone" type="text">
+  </div>
+  <br>  
+  <button class="button" (click)="addPhone()">Add new phone</button>
+  <br>
+  <br>  
+  <button type="submit">Submit</button>
+</form>
+</div>

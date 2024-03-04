@@ -1,0 +1,27 @@
+<p>multi-field works!</p>
+<div class="container">
+    <form [formGroup]="myForm" >
+        <h1>Multi field form</h1>
+        <hr>
+        <div formArrayName="units">
+            <div *ngFor="let unit of unitForms.controls; let i=index" [formGroupName]="i">
+                <mat-card>
+                    <h1>Product detail : {{i}}</h1>
+                <mat-form-field>
+                    <input matInput placeholder="Product" formControlName="productName">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="quantity" formControlName="quantity">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="price" formControlName="price">
+                </mat-form-field>
+                <button mat-raised-button color="warn" (click)="deleteUnit(i)" style="width: 150px;" class="justify-content-end">Delete</button>
+            </mat-card>
+            </div>
+        </div>
+        <button mat-raised-button color="primary" (click)="addUnit()">Add</button>
+        <hr>
+        <button color="primary" (click)="submitData(myForm.value)">Submit</button>
+    </form>
+</div>

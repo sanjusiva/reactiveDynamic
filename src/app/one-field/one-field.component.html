@@ -1,0 +1,18 @@
+<p>one-field works!</p>
+<div class="container">
+    <h2>Please add as many category as you want below.</h2>
+    <div class="input-row" *ngFor="let category of catArray.controls; index as idx; last as isLast">
+        <mat-form-field>
+            <input style="height: 35px;" matInput [formControl]="category">
+        </mat-form-field>&nbsp;
+        <button mat-icon-button color="warn" *ngIf="catArray.length > 1" (click)="removeInputControl(idx)">
+            <mat-icon style="color: red;">remove_circle</mat-icon>
+        </button>&nbsp;
+        <button mat-icon-button color="primary" *ngIf="isLast" (click)="addInputControl()">
+            <mat-icon>add_circle</mat-icon>
+        </button>
+    </div>
+
+    <h2 class="margin-top">Form Value</h2>
+    <div>{{catArray.valueChanges | async | json}}</div>
+</div>
